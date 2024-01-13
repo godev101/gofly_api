@@ -1,7 +1,6 @@
 tmp
 .history
 .github
-tmp
 gofly
 runtime/app
 runtime/logs
@@ -10,3 +9,7 @@ runtime/logs
 # local env files
 *.exe
 *.exe~
+
+# custom by lzy
+.idea/
+gofly_api

@@ -35,7 +35,8 @@ func (api *Install) Index(context *gin.Context) {
 		results.Failed(context, "项目路径获取失败", nil)
 		return
 	}
-	filePath := fmt.Sprintf("%s\\resource\\staticfile\\template\\install.lock", path)
+	//filePath := fmt.Sprintf("%s\\resource\\staticfile\\template\\install.lock", path)
+	filePath := filepath.Join(path, "/resource/staticfile/template/install.lock")
 	if _, err := os.Stat(filePath); err == nil {
 		context.HTML(http.StatusOK, "isinstall.html", gin.H{
 			"title": "已经安装页面",
@@ -85,7 +86,8 @@ func (api *Install) Save(c *gin.Context) {
 		model.ExecSql(sql)
 	}
 	//创建安装锁文件
-	filePath := fmt.Sprintf("%s\\resource\\staticfile\\template\\install.lock", path)
+	//filePath := fmt.Sprintf("%s\\resource\\staticfile\\template\\install.lock", path)
+	filePath := filepath.Join(path, "/resource/staticfile/template/install.lock")
 	os.Create(filePath)
 	results.Success(c, "安装成功,去前端刷新试试！", parameter, nil)
 }

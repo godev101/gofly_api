@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path/filepath"
 	"reflect"
 	"strings"
 
@@ -68,7 +69,8 @@ func (api *Install) Save(c *gin.Context) {
 	//创建数据库
 
 	//导入书库配置
-	SqlPath := fmt.Sprintf("%v\\resource\\staticfile\\template\\gofly_api.sql", path)
+	//SqlPath := fmt.Sprintf("%v\\resource\\staticfile\\template\\gofly_api.sql", path)
+	SqlPath := filepath.Join(path, "/resource/staticfile/template/gofly_api.sql")
 	sqls, sqlerr := os.ReadFile(SqlPath)
 	if sqlerr != nil {
 		results.Failed(c, "数据库文件不存在："+SqlPath, nil)
@@ -90,7 +92,8 @@ func (api *Install) Save(c *gin.Context) {
 
 // 更新配置文件
 func upConfFieldData(path string, parameter map[string]interface{}) error {
-	file_path := fmt.Sprintf("%v\\config\\settings.yml", path)
+	//file_path := fmt.Sprintf("%v\\config\\settings.yml", path)
+	file_path := filepath.Join(path, "/resource/config.yml")
 	f, err := os.Open(file_path)
 	if err != nil {
 		return err

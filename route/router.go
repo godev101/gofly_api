@@ -2,7 +2,7 @@ package route
 
 import (
 	//一定要导入这个Controller包，用来注册需要访问的方法
-	//这里路由-由构架是添加-开发者仅在指定工程目录下controller.go文件添加宝即可
+	//这里路由-由构架是添加-开发者仅在指定工程目录下controller.go文件添加包即可
 
 	// _ "gofly/app/admin"
 	// _ "gofly/app/business"

@@ -85,7 +85,7 @@ func getZapCore() zapcore.Core {
 
 // 使用 lumberjack 作为日志写入器
 func getLogWriter() zapcore.WriteSyncer {
-	tiemstr := time.Now().Format("200601/02")
+	tiemstr := time.Now().Format(global.App.Config.Log.Filename)
 	file := &lumberjack.Logger{
 		Filename:   global.App.Config.Log.RootDir + "/" + tiemstr + ".log",
 		MaxSize:    global.App.Config.Log.MaxSize,

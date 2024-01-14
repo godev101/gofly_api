@@ -16,7 +16,7 @@ var engin *gorose.Engin
 func MyInit(starType interface{}) {
 	global.App.Log.Info(fmt.Sprintf("连接数据库中:%v", starType))
 	global.App.Config.InitializeConfig()
-	dsbSource := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8&parseTime=True&loc=Local&timeout=1000ms", global.App.Config.DBconf.Username, global.App.Config.DBconf.Password, global.App.Config.DBconf.Hostname, global.App.Config.DBconf.Hostport, global.App.Config.DBconf.Database)
+	dsbSource := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local&timeout=1000ms", global.App.Config.DBconf.Username, global.App.Config.DBconf.Password, global.App.Config.DBconf.Hostname, global.App.Config.DBconf.Hostport, global.App.Config.DBconf.Database)
 	engin, err = gorose.Open(&gorose.Config{Driver: global.App.Config.DBconf.Driver, Dsn: dsbSource, Prefix: global.App.Config.DBconf.Prefix})
 	if err != nil {
 		global.App.Log.Info(fmt.Sprintf("数据库连接实例错误: %v", err))
@@ -37,7 +37,7 @@ func DB() gorose.IOrm {
 // 新建数据库
 func CreateDataBase(Username, Password, Hostname, Hostport, Database interface{}) {
 	global.App.Config.InitializeConfig()
-	dsbSource := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8&parseTime=True&loc=Local&timeout=1000ms", Username, Password, Hostname, Hostport, "")
+	dsbSource := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local&timeout=1000ms", Username, Password, Hostname, Hostport, "")
 	engin, err = gorose.Open(&gorose.Config{Driver: global.App.Config.DBconf.Driver, Dsn: dsbSource})
 	if err != nil {
 		global.App.Log.Info(fmt.Sprintf("创建时，数据库连接实例错误: %v", err))

@@ -36,6 +36,7 @@ func InitRouter() *gin.Engine {
 	//a.2.附件访问
 	//R.Static("/resource", "./resource") 危险操作，会暴露gofly_base.sql和config.yml
 	R.Static("/resource/uploads", "./resource/uploads")
+	R.StaticFile("/resource/staticfile/avatar.png", "./resource/staticfile/avatar.png")
 	R.LoadHTMLFiles("./resource/staticfile/template/install.html", "./resource/staticfile/template/isinstall.html")
 	//访问域名根目录重定向
 	R.GET("/", func(c *gin.Context) {

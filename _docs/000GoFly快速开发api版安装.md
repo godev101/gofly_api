@@ -14,9 +14,11 @@ go build -v .
 #go get -u github.com/gin-gonic/gin
 go get github.com/gin-gonic/gin@v1.9.1
 ## 
+## 
 go get github.com/gohouse/gorose/v2@v2.1.12
 ## 
 ## 
+go get gopkg.in/natefinch/lumberjack.v2@v2.2.1
 ## 
 ## 
 ## 

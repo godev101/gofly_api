@@ -15,7 +15,7 @@ require (
 	github.com/spf13/viper v1.13.0
 	github.com/u2takey/ffmpeg-go v0.4.1
 	go.uber.org/zap v1.17.0
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (

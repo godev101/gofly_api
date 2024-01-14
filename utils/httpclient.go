@@ -125,7 +125,7 @@ type Response struct {
 	Message   string      `json:"message"`
 }
 
-func ServerError(c *gin.Context, err interface{}) {
+func ServerError(c *gin.Context, err any) {
 	conf := global.App.Config
 	msg := "内部服务器错误"
 	if os.Getenv(gin.EnvGinMode) != gin.ReleaseMode && reflect.TypeOf(err).Name() == "string" {
@@ -134,6 +134,7 @@ func ServerError(c *gin.Context, err interface{}) {
 		if conf.App.Env != "pro" && os.Getenv(gin.EnvGinMode) != gin.ReleaseMode {
 			if _, ok := err.(error); ok {
 				msg = err.(error).Error()
+				global.App.Log.Error(msg)
 			}
 		} else {
 			str := fmt.Sprintf("内部服务器错误： %s\n", err.(error).Error()) //拼接字符串

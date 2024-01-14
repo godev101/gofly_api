@@ -12,7 +12,8 @@ import (
 func CustomRecovery() gin.HandlerFunc {
 	//加载配置
 	conf := global.App.Config
-	tiemstr := time.Now().Format("200601/02")
+	// filename: 200601/02 # 日志文件名称格式,time.Now().Format("200601/02")
+	tiemstr := time.Now().Format(conf.Log.Filename)
 	return gin.RecoveryWithWriter(
 		&lumberjack.Logger{
 			Filename:   conf.Log.RootDir + "/" + tiemstr + "_err.log",

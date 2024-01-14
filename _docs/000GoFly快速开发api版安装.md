@@ -5,8 +5,14 @@
 ![安装步骤二](img_1.png)
 ```shell
 ## 
+go mod tidy
+go run main.go
+fresh
+go build -v .
 ## 
 ## 
+#go get -u github.com/gin-gonic/gin
+go get github.com/gin-gonic/gin@v1.9.1
 ## 
 ## 
 ## 
